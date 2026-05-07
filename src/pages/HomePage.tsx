@@ -1,5 +1,5 @@
 //import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+//import { useState } from "react";
 
 const BRAND = "#1d7258";
 const LIGHT_BG = "#F4F9FA";
@@ -13,14 +13,14 @@ const MAILCHIMP_ACTION =
   "https://example.us1.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID";
 
 function HomePage() {
-  const [email, setEmail] = useState("");
+  //const [email, setEmail] = useState("");
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Header />
 
       <main className="flex-1">
-        <HeroSection email={email} setEmail={setEmail} />
+        <HeroSection />
 
         
         <FeaturesSection />
@@ -96,12 +96,12 @@ function Header() {
 
 /* ------------------------------ Hero Section ----------------------------- */
 
-type HeroProps = {
-  email: string;
-  setEmail: (value: string) => void;
-};
+// type HeroProps = {
+//   email: string;
+//   setEmail: (value: string) => void;
+// };
 
-function HeroSection({ email, setEmail }: HeroProps) {
+function HeroSection() {
   return (
     <section className="px-6 py-20 sm:py-28">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
