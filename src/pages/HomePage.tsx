@@ -1,5 +1,5 @@
 //import { createFileRoute } from "@tanstack/react-router";
-//import { useState } from "react";
+import { useState } from "react";
 
 const BRAND = "#1d7258";
 const LIGHT_BG = "#F4F9FA";
@@ -13,14 +13,14 @@ const MAILCHIMP_ACTION =
   "https://example.us1.list-manage.com/subscribe/post?u=YOUR_U&id=YOUR_ID";
 
 function HomePage() {
-  //const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col">
       <Header />
 
       <main className="flex-1">
-        <HeroSection />
+        <HeroSection  email={email} setEmail={setEmail} />
 
         
         <FeaturesSection />
@@ -65,7 +65,7 @@ function Header() {
               Carbondesh
             </h1>
             <p className="text-xs text-slate-400">
-              Bangladesh Carbon Market Intelligence
+              UAT Environment-Bangladesh Carbon Market Intelligence
             </p> 
           </div>
 
@@ -96,14 +96,15 @@ function Header() {
 
 /* ------------------------------ Hero Section ----------------------------- */
 
-// type HeroProps = {
-//   email: string;
-//   setEmail: (value: string) => void;
-// };
+type HeroProps = {
+  email: string;
+  setEmail: (value: string) => void;
+};
 
-function HeroSection() {
+function HeroSection({ email, setEmail }: HeroProps) {
+
   return (
-    <section className="px-6 py-20 sm:py-28">
+    <section className="px-6 py-20 sm:py-18">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* LEFT */}
         <div>
@@ -125,19 +126,83 @@ function HeroSection() {
             Bangladesh Carbon Market Intelligence
           </h2>
 
-          <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl">
+          <p className="mt-4 text-lg text-slate-600 leading-relaxed max-w-xl">
             Weekly insights on Bangladesh’s emerging carbon economy —
             Article 6 opportunities, carbon credit markets, project pipelines,
             policy updates, bilateral agreements, and registry intelligence.
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Badge text="Article 6" />
             <Badge text="Carbon Credits" />
             <Badge text="Project Pipeline" />
             <Badge text="Market Intelligence" />
           </div>
+<div className="mt-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm max-w-xl">
 
+  <h3
+    className="text-xl font-bold"
+    style={{ color: BRAND }}
+  >
+    Download Free Briefing
+  </h3>
+
+  <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+    Get an introductory briefing on Bangladesh’s emerging carbon market outlook.
+  </p>
+
+  <form
+    className="mt-5 flex flex-col sm:flex-row gap-3"
+    onSubmit={(e) => {
+      e.preventDefault();
+
+      if (!email) {
+        alert("Please enter your email");
+        return;
+      }
+
+      // Open PDF download
+      //window.open("/carbondesh-briefing.pdf", "_blank");
+        // Thank you message
+  alert("Thank you! Your download will start now.");
+
+  // Create hidden download link
+  const link = document.createElement("a");
+  link.href = "/carbondesh-briefing.pdf";
+  link.download = "CarbonDesh-Briefing.pdf";
+
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+
+  // Optional: clear email field
+  setEmail("");
+}
+    }
+  >
+    <input
+      type="email"
+      required
+      placeholder="Enter your email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2"
+      style={{ ["--tw-ring-color" as string]: BRAND }}
+    />
+
+    <button
+      type="submit"
+      className="px-6 py-3 rounded-xl text-white font-semibold transition hover:opacity-90"
+      style={{ backgroundColor: BRAND }}
+    >
+      Download PDF
+    </button>
+  </form>
+
+  <p className="mt-3 text-xs text-slate-400">
+    PDF briefing • Free download
+  </p>
+</div>
           <form
             id="subscribe"
             action={MAILCHIMP_ACTION}
@@ -279,8 +344,8 @@ function FeaturesSection() {
           </h2>
 
           <p className="mt-4 text-lg text-slate-600">
-            Built for investors, climate startups, project developers,
-            sustainability leaders, and policy stakeholders.
+            Built for investors, project developers,
+            sustainability leaders, and policy makers.
           </p>
         </div>
 
@@ -317,12 +382,13 @@ function FeaturesSection() {
 function AudienceSection() {
   const audiences = [
     "Carbon Project Developers",
-    "Climate-Tech Founders",
-    "Sustainability Teams",
-    "Investors & Funds",
-    "Policy Researchers",
-    "Consultants & Advisors",
-  ];
+    "Carbon Credit Stakeholders",
+    "Investors & Fund raisers",
+    "Financial Institutions",
+    "Reseach Institutions",
+    "Policy Makers",
+    "Government and non-government Agencies",
+   ];
 
   return (
     <section className="px-6 py-20">
