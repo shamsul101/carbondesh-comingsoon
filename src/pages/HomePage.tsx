@@ -65,7 +65,7 @@ function Header() {
               Carbondesh
             </h1>
             <p className="text-xs text-slate-400">
-              UAT Environment-Bangladesh Carbon Market Intelligence
+              Bangladesh Carbon Market Intelligence
             </p> 
           </div>
 
