@@ -64,7 +64,7 @@ function Header() {
             >
               Carbondesh
             </h1>
-            <p className="text-xs text-slate-400">
+            <p className="text-s text-slate-400">
               Bangladesh Carbon Market Intelligence
             </p> 
           </div>
@@ -120,7 +120,7 @@ function HeroSection({ email, setEmail }: HeroProps) {
           </div>
 
           <h2
-            className="text-5xl sm:text-6xl font-bold leading-tight tracking-tight"
+            className="text-6xl sm:text-4xl font-bold leading-tight tracking-tight"
             style={{ color: BRAND }}
           >
             Bangladesh Carbon Market Intelligence
@@ -183,7 +183,7 @@ function HeroSection({ email, setEmail }: HeroProps) {
     <input
       type="email"
       required
-      placeholder="Enter your email"
+      placeholder="Enter your best email address"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
       className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2"
