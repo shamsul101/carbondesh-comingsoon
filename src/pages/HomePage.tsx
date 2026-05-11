@@ -168,8 +168,8 @@ function HeroSection({ email, setEmail }: HeroProps) {
 
   // Create hidden download link
   const link = document.createElement("a");
-  link.href = "/Carbondesh-intro.pdf";
-  link.download = "Carbondesh-intro.pdf";
+  link.href = "/Carbondesh Intro.pdf";
+  link.download = "Carbondesh Intro.pdf";
 
   document.body.appendChild(link);
   link.click();
